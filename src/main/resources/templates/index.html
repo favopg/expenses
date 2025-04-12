@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,34 +53,39 @@
           <h5 class="mb-0">新しい取引を追加</h5>
         </div>
         <div class="card-body">
-          <form id="transaction-form">
+          <form id="transaction-form" th:action="${T(com.favoriteigo.expenses.common.Route).REGISTER}" th:object="${expenses}" method="post">
             <div class="mb-3">
               <label for="transaction-type" class="form-label">種類</label>
-              <select class="form-select" id="transaction-type" required>
+              <select class="form-select" id="transaction-type" th:field="*{kind}" required>
                 <option value="income">収入</option>
                 <option value="expense">支出</option>
               </select>
+              <span th:if="${#fields.hasErrors('kind')}" class="text-danger" th:errors="*{kind}"></span>
             </div>
+
             <div class="mb-3">
               <label for="transaction-category" class="form-label">カテゴリ</label>
-              <select class="form-select" id="transaction-category" required>
+              <select class="form-select" id="transaction-category" th:field="*{category}" required>
                 <!-- カテゴリはJavaScriptで動的に生成 -->
+                <option value="income">家賃</option>
+                <option value="expense">交通費</option>
+
               </select>
             </div>
             <div class="mb-3">
               <label for="transaction-amount" class="form-label">金額</label>
               <div class="input-group">
-                <input type="number" class="form-control" id="transaction-amount" min="1" required>
+                <input type="number" class="form-control" id="transaction-amount" min="1" th:field="*{money}" required>
                 <span class="input-group-text">円</span>
               </div>
             </div>
             <div class="mb-3">
               <label for="transaction-date" class="form-label">日付</label>
-              <input type="date" class="form-control" id="transaction-date" required>
+              <input type="date" class="form-control" id="transaction-date" th:field="*{useDate}" required>
             </div>
             <div class="mb-3">
               <label for="transaction-description" class="form-label">メモ</label>
-              <input type="text" class="form-control" id="transaction-description" placeholder="任意">
+              <input type="text" class="form-control" id="transaction-description" th:field="*{memo}" placeholder="任意">
             </div>
             <button type="submit" class="btn btn-primary w-100">追加</button>
           </form>
@@ -155,6 +160,7 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+<!--
 <script>
   // カテゴリの定義
   const categories = {
@@ -510,5 +516,6 @@
   // アプリケーションを初期化
   init();
 </script>
+-->
 </body>
 </html>
