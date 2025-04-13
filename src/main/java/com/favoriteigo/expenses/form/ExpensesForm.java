@@ -1,8 +1,9 @@
 package com.favoriteigo.expenses.form;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -13,6 +14,8 @@ import java.time.LocalDate;
  * @version 1.0
  * @since 1.0
  */
+@Getter
+@Setter
 public class ExpensesForm {
 
     @NotBlank
@@ -26,46 +29,6 @@ public class ExpensesForm {
     private LocalDate useDate = null;
 
     private String memo = null;
-
-    public String getKind() {
-        return kind;
-    }
-
-    public void setKind(String kind) {
-        this.kind = kind;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public int getMoney() {
-        return money;
-    }
-
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
-    public LocalDate getUseDate() {
-        return useDate;
-    }
-
-    public void setUseDate(LocalDate useDate) {
-        this.useDate = useDate;
-    }
-
-    public String getMemo() {
-        return memo;
-    }
-
-    public void setMemo(String memo) {
-        this.memo = memo;
-    }
 
     @Override
     public String toString() {
