@@ -1,0 +1,15 @@
+{
+  "name": "expenses",
+  "version": "1.0.0",
+  "description": "springbootを使用して家計簿アプリを作る",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
